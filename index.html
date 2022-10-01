@@ -9,7 +9,27 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>Hello world</h1>
+    <!-- Navigation Bar -->
+    <section>
+        <div class="navbar bg-base-100 shadow-lg lg:px-20">
+            <div class="flex-1">
+              <a class="btn btn-primary normal-case text-xl">NewsToday</a>
+              <button class="font-bold px-5">Portal</button>
+            </div>
+            <div class="flex-none gap-2">
+              <button class="text-cyan-600 font-bold">News</button>
+              <button>Blog</button>
+              <div class="dropdown dropdown-end">
+                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                  <div class="w-10 rounded-full">
+                    <img src="https://placeimg.com/80/80/people" />
+                  </div>
+                </label>
+                
+              </div>
+            </div>
+          </div>
+    </section>
     <script src="js/app.js"></script>
 </body>
 </html>
