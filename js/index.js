@@ -114,6 +114,7 @@ const dispalyModalDetails = (value) => {
             <figure><img class="w-96 h-64" src="${value.thumbnail_url
             }" alt="Movie"/></figure>
             <p class="py-4">${value.details}</p>
+            <h1 class="font-bold">Publisher details:-</h1>
             <div class="card-actions justify-between">
                     
                     <div class="flex">
@@ -130,6 +131,7 @@ const dispalyModalDetails = (value) => {
                                 }</h3>
                             </div>
                         </div>
+                        
                         <div class="flex">
                             <div>
                                 <i class="fa-solid fa-eye"></i>
