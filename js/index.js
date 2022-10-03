@@ -115,6 +115,7 @@ const dispalyModalDetails = (value) => {
             }" alt="Movie"/></figure>
             <p class="py-4">${value.details}</p>
             <div class="card-actions justify-between">
+                    
                     <div class="flex">
                         <div class="w-10">
                             <img class="rounded-full" src="${value.author.img}"/>
