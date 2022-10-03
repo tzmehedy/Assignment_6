@@ -33,11 +33,17 @@ const singleCatagories = (id) => {
 const displaySingleCatagories = (item) =>{
     console.log(item);
     document.getElementById('add-news').innerHTML="";
+    const itemCount=document.getElementById('item-count');
+    itemCount.innerText = `${item.length} items are found`
     
     const addNews = document.getElementById('add-news');
+    
+    
     item.forEach(newsIetm =>{
         console.log(newsIetm);
+
         const div = document.createElement('div');
+        
         div.classList.add("card","card-side","bg-base-100","shadow-lg","lg:m-20");
         div.innerHTML = `
             <figure><img class="w-96 h-64" src="${newsIetm.image_url}" alt="Movie"/></figure>
@@ -77,7 +83,8 @@ const displaySingleCatagories = (item) =>{
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                     </div>
-                    <button class="btn btn-primary">Watch</button>
+                    <button class="btn btn-ghost"><i class="fa-solid fa-arrow-right"></i></button>
+                    
                 </div>
             </div>
         `;
