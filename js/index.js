@@ -30,17 +30,22 @@ const singleCatagories = (id) => {
     .then (data=>displaySingleCatagories(data.data));
 }
 
+singleCatagories("08");
+
 const displaySingleCatagories = (item) =>{
-    console.log(item);
+    // console.log(item);
     document.getElementById('add-news').innerHTML="";
     const itemCount=document.getElementById('item-count');
-    itemCount.innerText = `${item.length} items are found`
+    itemCount.innerText = `${item.length} items are found`;
     
     const addNews = document.getElementById('add-news');
+    item.sort((a,b)=>{
+        return b.total_view - a.total_view;
+    })
     
     
     item.forEach(newsIetm =>{
-        console.log(newsIetm);
+        // console.log(newsIetm);
 
         const div = document.createElement('div');
         
@@ -83,13 +88,69 @@ const displaySingleCatagories = (item) =>{
                         <i class="fa-regular fa-star"></i>
                         <i class="fa-regular fa-star"></i>
                     </div>
-                    <button class="btn btn-ghost"><i class="fa-solid fa-arrow-right"></i></button>
-                    
+                    <label onclick="modalDetails('${newsIetm._id
+                    }')" for="my-modal-6" class="btn modal-button btn-ghost"><i class="fa-solid fa-arrow-right"></i></label>  
                 </div>
             </div>
         `;
         addNews.appendChild(div);
     })
+}
+
+const modalDetails = (id)=>{
+    fetch(` https://openapi.programming-hero.com/api/news/${id}`)
+    .then(res=>res.json())
+    .then(value=>dispalyModalDetails(value.data[0]));
+    
+}
+
+const dispalyModalDetails = (value) => {
+    console.log(value);
+    const modalView = document.getElementById('modal-view');
+    modalView.innerHTML = `
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">${value.title
+            }</h3>
+            <figure><img class="w-96 h-64" src="${value.thumbnail_url
+            }" alt="Movie"/></figure>
+            <p class="py-4">${value.details}</p>
+            <div class="card-actions justify-between">
+                    <div class="flex">
+                        <div class="w-10">
+                            <img class="rounded-full" src="${value.author.img}"/>
+                        </div>
+                        <div class="mx-5">
+                            <div>
+                                <h3>${value.author.name
+                                }</h3>
+                            </div>
+                            <div>
+                                <h3>${value.author.published_date
+                                }</h3>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div>
+                                <i class="fa-solid fa-eye"></i>
+                            </div>
+                            <div class="mx-5">
+                                <h3>${value.total_view}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>  
+                </div>
+            <div class="modal-action">
+              <label for="my-modal-6" class="btn btn-sm">Close</label>
+            </div>
+        </div>
+    `;
 }
 
 
