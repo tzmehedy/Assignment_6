@@ -77,7 +77,7 @@ const displaySingleCatagories = (item) =>{
                                 <i class="fa-solid fa-eye"></i>
                             </div>
                             <div class="mx-5">
-                                <h3>${newsIetm.total_view}</h3>
+                                <h3>${newsIetm.total_view/100}M</h3>
                             </div>
                         </div>
                     </div>
